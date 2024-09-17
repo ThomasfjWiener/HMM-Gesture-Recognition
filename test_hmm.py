@@ -13,7 +13,7 @@ kmeans_model = joblib.load(f'Kmeans-models/{kmeans_fn}')
 test_emissions = {} # separate data by .txt file
 
 # TODO: REPLACE DIRECTORY NAME WITH NAME OF TEST DIRECTORY
-test_directory = 'ECE5242Proj2-test'
+test_directory = ''
 
 for filename in os.listdir(test_directory):
     filepath = os.path.join(test_directory, filename)
