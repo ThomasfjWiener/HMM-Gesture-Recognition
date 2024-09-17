@@ -101,3 +101,21 @@ A couple additional takeaways I had during training and eval:
 - I found (partially through still having correct predictions with a flawed A) that the A matrix had minor changes in training as long as initialization was good. It seems that B is what changes the most and carries the weight of the model. My grid search seemed to favor large state sizes, but I think this was only to give B more ways of expressing emissions probabilities: For example, if a “swinging down” state of a gesture took a long time/ portion of the sequence, instead of changing the transition probability of A at state 3 to adjust for this, the HMM model would prefer to just make the emission probabilities of state 3 and 4 similar, artificially making this “swinging down state” longer.
 - I also found that it was not smart to train for too many epochs: I found slight gains in training log likelihood could be attained up to 200 epochs, but these gains often came at the cost of overfitting and would cause one of beat3 or beat4 to dominate in classification during validation.
 
+## Appendix
+### Appendix A: Examples of 3d plots of IMU training data
+![](readme_visuals/Appendix_A1.png)
+![](readme_visuals/Appendix_A2.png)
+### Appendix B: Histograms of clustered training data 
+![](IMU-train-visuals/Kmeans_cluster_histograms/50_clusters_hist.png) ![](IMU-train-visuals/Kmeans_cluster_histograms/100_clusters_hist.png)
+### Appendix C: Some sequence repetition histograms. Each histogram is based on all the data in IMU-train after clustering
+![](IMU-train-visuals/Kmeans_cluster_histograms/50_repeated_emissions_hist.png) ![](IMU-train-visuals/Kmeans_cluster_histograms/100_repeated_emissions_hist.png)
+### Appendix D: Training curve examples
+![](IMU-train-visuals/TrainingCurves/training_curve_beat3_80clusters_10states.png)
+![](IMU-train-visuals/TrainingCurves/training_curve_beat4_80clusters_10states.png)
+### Appendix E: Grid search heatmap over hyperparameter, using my “Ratio Score”
+![](IMU-train-visuals/Grid-Search/beat3_RatioScore_gridsearch.png)
+![](IMU-train-visuals/Grid-Search/beat4_RatioScore_gridsearch.png)
+![](IMU-train-visuals/Grid-Search/circle_RatioScore_gridsearch.png)
+![](IMU-train-visuals/Grid-Search/eight_RatioScore_gridsearch.png)
+![](IMU-train-visuals/Grid-Search/inf_RatioScore_gridsearch.png)
+![](IMU-train-visuals/Grid-Search/wave_RatioScore_gridsearch.png)
